@@ -12,7 +12,10 @@ export default {
         secondary: "#3A7BD5",
         bg: "#F8FAFC",
         cta: "#10B981"
-      }
+      },
+      fontFamily: {
+        sans: ["Inter", "sans-serif"],
+      },
     },
   },
   plugins: [],
