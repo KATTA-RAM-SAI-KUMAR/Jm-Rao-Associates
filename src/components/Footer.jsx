@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   FaFacebook,
   FaLinkedin,
@@ -11,7 +11,6 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
-
   const footerLinks = [
     {
       title: "GST Services",
@@ -86,11 +85,21 @@ const Footer = () => {
         {/* Company Info */}
         <div className="grid md:grid-cols-2 gap-10">
 
-          {/* Left */}
+          {/* LEFT */}
           <div>
-            <h2 className="text-2xl font-bold mb-3">
+            <h2 className="text-2xl font-bold mb-2">
               JM Rao Associates
             </h2>
+
+            <p className="text-blue-200 text-sm mb-1">
+              Proprietor: <span className="text-white font-semibold">
+                J. Manikyalarao
+              </span>
+            </p>
+
+            <p className="text-blue-300 text-xs mb-4">
+              GST | Income Tax | TDS Specialist
+            </p>
 
             <p className="text-blue-100 mb-6">
               Trusted tax consultants in Narasapuram & Palakolu providing GST,
@@ -99,20 +108,27 @@ const Footer = () => {
 
             {/* Contact */}
             <div className="space-y-3">
+
               <div className="flex items-center">
                 <FaPhone className="mr-3" />
-                <span>+91 XXXXX XXXXX</span>
+                <span>+91 88012 21088</span>
+              </div>
+
+              <div className="flex items-center">
+                <FaPhone className="mr-3 opacity-70" />
+                <span>+91 94914 68423</span>
               </div>
 
               <div className="flex items-center">
                 <FaRegEnvelope className="mr-3" />
-                <span>your@email.com</span>
+                <span>jmraoassociates@gmail.com</span>
               </div>
 
               <div className="flex items-center">
                 <FaMapMarkerAlt className="mr-3" />
-                <span>Narasapuram & Palakolu</span>
+                <span>Narasapuram & Palakolu, Andhra Pradesh</span>
               </div>
+
             </div>
 
             {/* Social */}
@@ -123,13 +139,16 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Map + Timing */}
+          {/* RIGHT */}
           <div>
-            <h3 className="text-lg font-semibold mb-3">Office Timings</h3>
+            <h3 className="text-lg font-semibold mb-3">
+              Office Timings
+            </h3>
 
             <p className="text-blue-100 text-sm mb-2">
               🕒 Mon - Sat: 9:30 AM - 7:00 PM
             </p>
+
             <p className="text-blue-100 text-sm mb-4">
               Sunday: Closed
             </p>
@@ -141,6 +160,7 @@ const Footer = () => {
               className="w-full h-40 rounded-lg"
             />
           </div>
+
         </div>
 
         {/* Bottom */}
@@ -154,8 +174,9 @@ const Footer = () => {
 
         {/* WhatsApp */}
         <a
-          href="https://wa.me/91XXXXXXXXXX"
+          href="https://wa.me/918801221088"
           target="_blank"
+          rel="noreferrer"
           className="bg-green-500 p-3 rounded-full shadow-lg hover:scale-110 transition"
         >
           💬
@@ -163,7 +184,7 @@ const Footer = () => {
 
         {/* Call */}
         <a
-          href="tel:+91XXXXXXXXXX"
+          href="tel:+918801221088"
           className="bg-blue-600 p-3 rounded-full shadow-lg hover:scale-110 transition"
         >
           📞
@@ -173,10 +194,12 @@ const Footer = () => {
         <a
           href="https://maps.google.com"
           target="_blank"
+          rel="noreferrer"
           className="bg-purple-600 p-3 rounded-full shadow-lg hover:scale-110 transition"
         >
           📍
         </a>
+
       </div>
     </footer>
   );
