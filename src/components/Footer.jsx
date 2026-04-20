@@ -6,6 +6,13 @@ import {
   FaPhone,
   FaMapMarkerAlt,
   FaRegEnvelope,
+  FaClock,
+  FaWhatsapp,
+  FaArrowUp,
+  FaCheckCircle,
+  FaUsers,
+  FaAward,
+  FaShieldAlt
 } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -14,6 +21,7 @@ const Footer = () => {
   const footerLinks = [
     {
       title: "GST Services",
+      icon: <FaCheckCircle className="text-blue-400" />,
       items: [
         { name: "GST Registration", path: "/gst-registration" },
         { name: "GST Returns Filing", path: "/gst-return-filing" },
@@ -22,14 +30,17 @@ const Footer = () => {
     },
     {
       title: "Tax Services",
+      icon: <FaShieldAlt className="text-green-400" />,
       items: [
         { name: "Income Tax Filing", path: "/income-tax-filing" },
         { name: "Tax Audit", path: "/income-tax-audit" },
         { name: "TDS Returns", path: "/tds-returns" },
+        { name: "Professional Tax", path: "/professional-tax-registration" },
       ],
     },
     {
       title: "Food License",
+      icon: <FaAward className="text-orange-400" />,
       items: [
         { name: "FSSAI Registration", path: "/fssai-registration" },
         { name: "State License", path: "/fssai-state-license" },
@@ -38,6 +49,7 @@ const Footer = () => {
     },
     {
       title: "Registrations",
+      icon: <FaUsers className="text-purple-400" />,
       items: [
         { name: "PAN Registration", path: "/pan-registration" },
         { name: "TAN Registration", path: "/tan-registration" },
@@ -46,161 +58,268 @@ const Footer = () => {
     },
   ];
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
-    <footer className="bg-gradient-to-b from-blue-900 to-blue-700 text-white pt-16 pb-10 relative overflow-hidden">
+    <footer className="bg-gradient-to-b from-gray-900 via-blue-900 to-blue-800 text-white relative overflow-hidden">
 
-      {/* Background Glow */}
-      <motion.div
-        className="absolute top-10 left-10 w-32 h-32 bg-blue-500 rounded-full blur-3xl opacity-20"
-        animate={{ scale: [1, 1.3, 1] }}
-        transition={{ duration: 8, repeat: Infinity }}
-      />
-
-      <div className="max-w-7xl mx-auto px-6">
-
-        {/* Links Section */}
-        <div className="grid md:grid-cols-4 gap-10 mb-12">
-          {footerLinks.map((section, i) => (
-            <div key={i}>
-              <h3 className="text-lg font-semibold mb-4 border-b border-blue-400 inline-block">
-                {section.title}
-              </h3>
-
-              <ul className="space-y-2 text-sm">
-                {section.items.map((item, j) => (
-                  <li key={j}>
-                    <Link
-                      to={item.path}
-                      className="hover:text-gray-200 transition"
-                    >
-                      → {item.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-
-        {/* Company Info */}
-        <div className="grid md:grid-cols-2 gap-10">
-
-          {/* LEFT */}
-          <div>
-            <h2 className="text-2xl font-bold mb-2">
-              JM Rao Associates
-            </h2>
-
-            <p className="text-blue-200 text-sm mb-1">
-              Proprietor: <span className="text-white font-semibold">
-                J. Manikyalarao
-              </span>
-            </p>
-
-            <p className="text-blue-300 text-xs mb-4">
-              GST | Income Tax | TDS Specialist
-            </p>
-
-            <p className="text-blue-100 mb-6">
-              Trusted tax consultants in Narasapuram & Palakolu providing GST,
-              Income Tax, TDS, and accounting services with professionalism and accuracy.
-            </p>
-
-            {/* Contact */}
-            <div className="space-y-3">
-
-              <div className="flex items-center">
-                <FaPhone className="mr-3" />
-                <span>+91 88012 21088</span>
-              </div>
-
-              <div className="flex items-center">
-                <FaPhone className="mr-3 opacity-70" />
-                <span>+91 94914 68423</span>
-              </div>
-
-              <div className="flex items-center">
-                <FaRegEnvelope className="mr-3" />
-                <span>jmraoassociates@gmail.com</span>
-              </div>
-
-              <div className="flex items-center">
-                <FaMapMarkerAlt className="mr-3" />
-                <span>Narasapuram & Palakolu, Andhra Pradesh</span>
-              </div>
-
-            </div>
-
-            {/* Social */}
-            <div className="flex space-x-4 mt-5">
-              <a href="#" className="hover:text-gray-200"><FaFacebook /></a>
-              <a href="#" className="hover:text-gray-200"><FaLinkedin /></a>
-              <a href="#" className="hover:text-gray-200"><FaInstagram /></a>
-            </div>
-          </div>
-
-          {/* RIGHT */}
-          <div>
-            <h3 className="text-lg font-semibold mb-3">
-              Office Timings
-            </h3>
-
-            <p className="text-blue-100 text-sm mb-2">
-              🕒 Mon - Sat: 9:30 AM - 7:00 PM
-            </p>
-
-            <p className="text-blue-100 text-sm mb-4">
-              Sunday: Closed
-            </p>
-
-            {/* Map */}
-            <iframe
-              title="map"
-              src="https://www.google.com/maps?q=Narasapuram&output=embed"
-              className="w-full h-40 rounded-lg"
-            />
-          </div>
-
-        </div>
-
-        {/* Bottom */}
-        <div className="text-center mt-10 text-sm text-blue-200 border-t border-blue-500 pt-4">
-          © {new Date().getFullYear()} JM Rao Associates. All rights reserved.
-        </div>
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_30%_20%,white,transparent_50%)]"></div>
+        <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(circle_at_70%_80%,white,transparent_50%)]"></div>
       </div>
 
-      {/* Floating Buttons */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        {/* Main Footer Content */}
+        <div className="py-16">
+
+          {/* Company Info Section */}
+          <div className="mb-12">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+              {/* Company Details */}
+              <div className="lg:col-span-1">
+                <div className="mb-6">
+                  <h2 className="text-3xl font-bold mb-2 bg-gradient-to-r from-blue-400 to-blue-200 bg-clip-text text-transparent">
+                    JM Rao Associates
+                  </h2>
+                  <p className="text-blue-200 text-sm mb-1">
+                    Proprietor: <span className="text-white font-semibold">J. Manikyalarao</span>
+                  </p>
+                  <p className="text-blue-300 text-xs mb-4">
+                    GST | Income Tax | TDS Specialist
+                  </p>
+                </div>
+
+                <p className="text-blue-100 mb-6 leading-relaxed">
+                  Trusted tax consultants in Narasapuram & Palakolu providing comprehensive GST,
+                  Income Tax, TDS, and accounting services with professionalism and accuracy since 2017.
+                </p>
+
+                {/* Quick Stats */}
+                <div className="grid grid-cols-3 gap-4 mb-6">
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-blue-300">150+</div>
+                    <div className="text-xs text-blue-200">Clients</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-green-300">8+</div>
+                    <div className="text-xs text-blue-200">Years</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-purple-300">100%</div>
+                    <div className="text-xs text-blue-200">Compliance</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Contact Information */}
+              <div className="lg:col-span-1">
+                <h3 className="text-xl font-semibold mb-6 flex items-center">
+                  <FaPhone className="mr-2 text-blue-400" />
+                  Contact Information
+                </h3>
+
+                <div className="space-y-4">
+                  <div className="flex items-start space-x-3">
+                    <FaPhone className="text-blue-400 mt-1 flex-shrink-0" />
+                    <div>
+                      <div className="font-medium">Primary</div>
+                      <a href="tel:+918801221088" className="text-blue-200 hover:text-white transition-colors">
+                        +91 88012 21088
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start space-x-3">
+                    <FaPhone className="text-blue-400 mt-1 flex-shrink-0 opacity-75" />
+                    <div>
+                      <div className="font-medium">Secondary</div>
+                      <a href="tel:+919491468423" className="text-blue-200 hover:text-white transition-colors">
+                        +91 94914 68423
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start space-x-3">
+                    <FaRegEnvelope className="text-blue-400 mt-1 flex-shrink-0" />
+                    <div>
+                      <div className="font-medium">Email</div>
+                      <a href="mailto:jmraoassociates@gmail.com" className="text-blue-200 hover:text-white transition-colors">
+                        jmraoassociates@gmail.com
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start space-x-3">
+                    <FaMapMarkerAlt className="text-blue-400 mt-1 flex-shrink-0" />
+                    <div>
+                      <div className="font-medium">Locations</div>
+                      <div className="text-blue-200">
+                        Narasapuram & Palakolu,<br />Andhra Pradesh
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start space-x-3">
+                    <FaClock className="text-blue-400 mt-1 flex-shrink-0" />
+                    <div>
+                      <div className="font-medium">Office Hours</div>
+                      <div className="text-blue-200 text-sm">
+                        Mon - Sat: 9:30 AM - 7:00 PM<br />
+                        Sunday: Closed
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Map Section */}
+              <div className="lg:col-span-1">
+                <h3 className="text-xl font-semibold mb-6 flex items-center">
+                  <FaMapMarkerAlt className="mr-2 text-blue-400" />
+                  Our Location
+                </h3>
+
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 mb-6">
+                  <iframe
+                    title="Office Location"
+                    src="https://www.google.com/maps?q=Narasapuram&output=embed"
+                    className="w-full h-48 rounded-lg border-0"
+                    loading="lazy"
+                  />
+                </div>
+
+                {/* Social Media */}
+                <div>
+                  <h4 className="text-lg font-medium mb-4">Follow Us</h4>
+                  <div className="flex space-x-4">
+                    <a
+                      href="#"
+                      className="bg-blue-600 hover:bg-blue-500 p-3 rounded-full transition-all duration-200 hover:scale-110 shadow-lg"
+                      aria-label="Facebook"
+                    >
+                      <FaFacebook className="text-white" />
+                    </a>
+                    <a
+                      href="#"
+                      className="bg-blue-700 hover:bg-blue-600 p-3 rounded-full transition-all duration-200 hover:scale-110 shadow-lg"
+                      aria-label="LinkedIn"
+                    >
+                      <FaLinkedin className="text-white" />
+                    </a>
+                    <a
+                      href="#"
+                      className="bg-gradient-to-r from-pink-500 to-orange-500 hover:from-pink-400 hover:to-orange-400 p-3 rounded-full transition-all duration-200 hover:scale-110 shadow-lg"
+                      aria-label="Instagram"
+                    >
+                      <FaInstagram className="text-white" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          {/* Services Links */}
+          <div className="mb-12">
+            <h3 className="text-2xl font-bold text-center mb-8 text-blue-200">Our Services</h3>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {footerLinks.map((section, index) => (
+                <div key={index} className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:bg-white/10 transition-all duration-200">
+                  <div className="flex items-center mb-4">
+                    <div className="mr-3 p-2 bg-white/10 rounded-lg">
+                      {section.icon}
+                    </div>
+                    <h4 className="text-lg font-semibold">{section.title}</h4>
+                  </div>
+
+                  <ul className="space-y-2">
+                    {section.items.map((item, itemIndex) => (
+                      <li key={itemIndex}>
+                        <Link
+                          to={item.path}
+                          className="text-blue-200 hover:text-white transition-colors duration-200 flex items-center group"
+                        >
+                          <span className="mr-2 text-xs opacity-60 group-hover:opacity-100">→</span>
+                          <span className="text-sm">{item.name}</span>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+
+        </div>
+
+        {/* Bottom Section */}
+        <div className="border-t border-white/20 pt-8 pb-6">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <div className="text-center md:text-left mb-4 md:mb-0">
+              <p className="text-blue-200 text-sm">
+                © {new Date().getFullYear()} JM Rao Associates. All rights reserved.
+              </p>
+              <p className="text-blue-300 text-xs mt-1">
+                Trusted Tax & Compliance Solutions Since 2017
+              </p>
+            </div>
+
+            <div className="flex items-center space-x-6 text-sm text-blue-200">
+              <Link to="/privacy-policy" className="hover:text-white transition-colors">
+                Privacy Policy
+              </Link>
+              <Link to="/terms-of-service" className="hover:text-white transition-colors">
+                Terms of Service
+              </Link>
+              <Link to="/contact-us" className="hover:text-white transition-colors">
+                Contact Us
+              </Link>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      {/* Floating Action Buttons */}
       <div className="fixed bottom-6 right-6 flex flex-col space-y-3 z-50">
+
+        {/* Scroll to Top */}
+        <button
+          onClick={scrollToTop}
+          className="bg-blue-600 hover:bg-blue-500 p-3 rounded-full shadow-lg hover:scale-110 transition-all duration-200 group"
+          aria-label="Scroll to top"
+        >
+          <FaArrowUp className="text-white group-hover:-translate-y-0.5 transition-transform" />
+        </button>
 
         {/* WhatsApp */}
         <a
           href="https://wa.me/918801221088"
           target="_blank"
           rel="noreferrer"
-          className="bg-green-500 p-3 rounded-full shadow-lg hover:scale-110 transition"
+          className="bg-green-500 hover:bg-green-400 p-3 rounded-full shadow-lg hover:scale-110 transition-all duration-200 group"
+          aria-label="WhatsApp"
         >
-          💬
+          <FaWhatsapp className="text-white text-lg group-hover:scale-110 transition-transform" />
         </a>
 
         {/* Call */}
         <a
           href="tel:+918801221088"
-          className="bg-blue-600 p-3 rounded-full shadow-lg hover:scale-110 transition"
+          className="bg-blue-600 hover:bg-blue-500 p-3 rounded-full shadow-lg hover:scale-110 transition-all duration-200 group"
+          aria-label="Call us"
         >
-          📞
-        </a>
-
-        {/* Location */}
-        <a
-          href="https://maps.google.com"
-          target="_blank"
-          rel="noreferrer"
-          className="bg-purple-600 p-3 rounded-full shadow-lg hover:scale-110 transition"
-        >
-          📍
+          <FaPhone className="text-white group-hover:animate-pulse" />
         </a>
 
       </div>
+
     </footer>
   );
 };

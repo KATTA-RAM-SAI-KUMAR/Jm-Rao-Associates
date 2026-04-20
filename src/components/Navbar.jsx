@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/logo1.svg";
+import { FaBars, FaTimes, FaChevronDown, FaPhone, FaWhatsapp } from "react-icons/fa";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -11,146 +12,296 @@ export default function Navbar() {
     reg: false,
   });
 
+  const toggleMobileMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
+  const closeMobileMenu = () => {
+    setMenuOpen(false);
+    setMobileOpen({
+      gst: false,
+      tax: false,
+      food: false,
+      reg: false,
+    });
+  };
+
   return (
-    <nav className="bg-white shadow-md sticky top-0 z-50">
-      
-      {/* Top Bar */}
-      <div className="flex justify-between items-center px-6 py-4">
+    <nav className="bg-white shadow-lg sticky top-0 z-50 border-b border-gray-100">
 
-        {/* Logo */}
-        <Link to="/" className="flex items-center space-x-0.5">
-          <img src={logo} alt="JM Rao Associates" className="h-14 w-auto object-contain" />
-          <span className="text-xl font-bold">
-            <span className="text-blue-700">JM RAO</span>{" "}
-            <span className="text-gray-800">ASSOCIATES</span>
-          </span>
-        </Link>
+      {/* Top Contact Bar */}
+      <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white py-2 px-4">
+        <div className="max-w-7xl mx-auto flex justify-between items-center text-sm">
+          <div className="flex items-center space-x-6">
+            <div className="flex items-center space-x-2">
+              <FaPhone className="text-yellow-300 text-xs" />
+              <span>+91 8801221088</span>
+            </div>
+            <div className="hidden sm:flex items-center space-x-2">
+              <FaWhatsapp className="text-green-300 text-xs" />
+              <span>WhatsApp: +91 8801221088</span>
+            </div>
+          </div>
+          <div className="hidden md:block text-xs opacity-90">
+            Serving Narasapuram & Palakolu | Est. 2017
+          </div>
+        </div>
+      </div>
 
-        {/* Desktop Menu */}
-        <ul className="hidden md:flex items-center space-x-8 font-medium text-gray-700">
+      {/* Main Navbar */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center py-4">
 
-          <Link to="/" className="hover:text-blue-600">Home</Link>
-
-          <Link to="/about-us" className="hover:text-blue-600">
-            About Us
+          {/* Logo */}
+          <Link to="/" className="flex items-center space-x-3" onClick={closeMobileMenu}>
+            <img src={logo} alt="JM Rao Associates" className="h-12 w-auto object-contain" />
+            <div className="text-xl font-bold">
+              <span className="text-blue-700">JM RAO</span>{" "}
+              <span className="text-gray-800">ASSOCIATES</span>
+            </div>
           </Link>
 
-          {/* GST */}
-          <div className="relative group">
-            <button className="hover:text-blue-600">GST ▾</button>
-            <div className="absolute left-0 top-full mt-0 bg-white shadow-lg rounded-lg w-56 p-4 space-y-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-              <Link to="/gst-registration" className="block hover:text-blue-600">GST Registration</Link>
-              <Link to="/gst-return-filing" className="block hover:text-blue-600">GST Returns Filing</Link>
-              <Link to="/gst-modifications" className="block hover:text-blue-600">GST Modifications</Link>
+          {/* Desktop Menu */}
+          <ul className="hidden lg:flex items-center space-x-8 font-medium text-gray-700">
+
+            <Link to="/" className="hover:text-blue-600 transition-colors duration-200 font-semibold">
+              Home
+            </Link>
+
+            <Link to="/about-us" className="hover:text-blue-600 transition-colors duration-200 font-semibold">
+              About Us
+            </Link>
+
+            {/* GST Dropdown */}
+            <div className="relative group">
+              <button className="hover:text-blue-600 transition-colors duration-200 font-semibold flex items-center space-x-1">
+                <span>GST</span>
+                <FaChevronDown className="text-xs" />
+              </button>
+              <div className="absolute left-0 top-full mt-2 bg-white shadow-xl rounded-lg w-64 p-4 space-y-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 border border-gray-100">
+                <div className="border-b border-gray-200 pb-2 mb-2">
+                  <h3 className="font-semibold text-blue-700 text-sm uppercase tracking-wide">GST Services</h3>
+                </div>
+                <Link to="/gst-registration" className="block hover:text-blue-600 transition-colors duration-200 hover:bg-blue-50 px-2 py-1 rounded">
+                  GST Registration
+                </Link>
+                <Link to="/gst-return-filing" className="block hover:text-blue-600 transition-colors duration-200 hover:bg-blue-50 px-2 py-1 rounded">
+                  GST Returns Filing
+                </Link>
+                <Link to="/gst-modifications" className="block hover:text-blue-600 transition-colors duration-200 hover:bg-blue-50 px-2 py-1 rounded">
+                  GST Modifications
+                </Link>
+              </div>
             </div>
-          </div>
 
-          {/* TAX */}
-          <div className="relative group">
-            <button className="hover:text-blue-600">Tax ▾</button>
-            <div className="absolute left-0 top-full mt-0 bg-white shadow-lg rounded-lg w-56 p-4 space-y-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-              <Link to="/income-tax-filing" className="block hover:text-blue-600">Income Tax Filing</Link>
-              <Link to="/income-tax-audit" className="block hover:text-blue-600">Tax Audit</Link>
-              <Link to="/tds-returns" className="block hover:text-blue-600">TDS Returns</Link>
-              <Link to="/professional-tax-registration" className="block hover:text-blue-600">Professional Tax</Link>
+            {/* Tax Dropdown */}
+            <div className="relative group">
+              <button className="hover:text-blue-600 transition-colors duration-200 font-semibold flex items-center space-x-1">
+                <span>Tax</span>
+                <FaChevronDown className="text-xs" />
+              </button>
+              <div className="absolute left-0 top-full mt-2 bg-white shadow-xl rounded-lg w-64 p-4 space-y-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 border border-gray-100">
+                <div className="border-b border-gray-200 pb-2 mb-2">
+                  <h3 className="font-semibold text-blue-700 text-sm uppercase tracking-wide">Tax Services</h3>
+                </div>
+                <Link to="/income-tax-filing" className="block hover:text-blue-600 transition-colors duration-200 hover:bg-blue-50 px-2 py-1 rounded">
+                  Income Tax Filing
+                </Link>
+                <Link to="/income-tax-audit" className="block hover:text-blue-600 transition-colors duration-200 hover:bg-blue-50 px-2 py-1 rounded">
+                  Tax Audit
+                </Link>
+                <Link to="/tds-returns" className="block hover:text-blue-600 transition-colors duration-200 hover:bg-blue-50 px-2 py-1 rounded">
+                  TDS Returns
+                </Link>
+                <Link to="/professional-tax-registration" className="block hover:text-blue-600 transition-colors duration-200 hover:bg-blue-50 px-2 py-1 rounded">
+                  Professional Tax
+                </Link>
+              </div>
             </div>
-          </div>
 
-          {/* FOOD LICENSE */}
-          <div className="relative group">
-            <button className="hover:text-blue-600">Food License ▾</button>
-            <div className="absolute left-0 top-full mt-0 bg-white shadow-lg rounded-lg w-56 p-4 space-y-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-              <Link to="/fssai-registration" className="block hover:text-blue-600">FSSAI Registration</Link>
-              <Link to="/fssai-state-license" className="block hover:text-blue-600">State License</Link>
-              <Link to="/fssai-central-license" className="block hover:text-blue-600">Central License</Link>
+            {/* Food License Dropdown */}
+            <div className="relative group">
+              <button className="hover:text-blue-600 transition-colors duration-200 font-semibold flex items-center space-x-1">
+                <span>Food License</span>
+                <FaChevronDown className="text-xs" />
+              </button>
+              <div className="absolute left-0 top-full mt-2 bg-white shadow-xl rounded-lg w-64 p-4 space-y-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 border border-gray-100">
+                <div className="border-b border-gray-200 pb-2 mb-2">
+                  <h3 className="font-semibold text-blue-700 text-sm uppercase tracking-wide">FSSAI Services</h3>
+                </div>
+                <Link to="/fssai-registration" className="block hover:text-blue-600 transition-colors duration-200 hover:bg-blue-50 px-2 py-1 rounded">
+                  FSSAI Registration
+                </Link>
+                <Link to="/fssai-state-license" className="block hover:text-blue-600 transition-colors duration-200 hover:bg-blue-50 px-2 py-1 rounded">
+                  State License
+                </Link>
+                <Link to="/fssai-central-license" className="block hover:text-blue-600 transition-colors duration-200 hover:bg-blue-50 px-2 py-1 rounded">
+                  Central License
+                </Link>
+              </div>
             </div>
-          </div>
 
-          {/* REGISTRATION */}
-          <div className="relative group">
-            <button className="hover:text-blue-600">Registration ▾</button>
-            <div className="absolute left-0 top-full mt-0 bg-white shadow-lg rounded-lg w-56 p-4 space-y-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-              <Link to="/pan-registration" className="block hover:text-blue-600">PAN Registration</Link>
-              <Link to="/tan-registration" className="block hover:text-blue-600">TAN Registration</Link>
-              <Link to="/msme-registration" className="block hover:text-blue-600">MSME Registration</Link>
+            {/* Registration Dropdown */}
+            <div className="relative group">
+              <button className="hover:text-blue-600 transition-colors duration-200 font-semibold flex items-center space-x-1">
+                <span>Registration</span>
+                <FaChevronDown className="text-xs" />
+              </button>
+              <div className="absolute left-0 top-full mt-2 bg-white shadow-xl rounded-lg w-64 p-4 space-y-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 border border-gray-100">
+                <div className="border-b border-gray-200 pb-2 mb-2">
+                  <h3 className="font-semibold text-blue-700 text-sm uppercase tracking-wide">Business Registration</h3>
+                </div>
+                <Link to="/pan-registration" className="block hover:text-blue-600 transition-colors duration-200 hover:bg-blue-50 px-2 py-1 rounded">
+                  PAN Registration
+                </Link>
+                <Link to="/tan-registration" className="block hover:text-blue-600 transition-colors duration-200 hover:bg-blue-50 px-2 py-1 rounded">
+                  TAN Registration
+                </Link>
+                <Link to="/msme-registration" className="block hover:text-blue-600 transition-colors duration-200 hover:bg-blue-50 px-2 py-1 rounded">
+                  MSME Registration
+                </Link>
+              </div>
             </div>
-          </div>
 
-          <Link to="/contact-us" className="hover:text-blue-600">
-            Contact Us
-          </Link>
+            <Link to="/contact-us" className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full font-semibold transition-all duration-200 shadow-md hover:shadow-lg">
+              Contact Us
+            </Link>
 
-        </ul>
+          </ul>
 
-        {/* Mobile Button */}
-        <button
-          className="md:hidden text-2xl text-blue-700 focus:outline-none"
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
-          ☰
-        </button>
+          {/* Mobile Menu Button */}
+          <button
+            className="lg:hidden text-2xl text-blue-700 focus:outline-none p-2 hover:bg-blue-50 rounded-lg transition-colors duration-200"
+            onClick={toggleMobileMenu}
+          >
+            {menuOpen ? <FaTimes /> : <FaBars />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="md:hidden px-6 pb-4 space-y-3 text-gray-700 font-medium">
+        <div className="lg:hidden bg-white border-t border-gray-200 shadow-lg">
+          <div className="px-4 py-6 space-y-4 text-gray-700 font-medium max-h-screen overflow-y-auto">
 
-          <Link to="/" className="block hover:text-blue-600">Home</Link>
-          <Link to="/about-us" className="block hover:text-blue-600">About Us</Link>
+            <Link to="/" className="block hover:text-blue-600 transition-colors duration-200 py-2 px-3 rounded-lg hover:bg-blue-50" onClick={closeMobileMenu}>
+              Home
+            </Link>
 
-          {/* GST */}
-          <div>
-            <p onClick={() => setMobileOpen({...mobileOpen, gst: !mobileOpen.gst})} className="cursor-pointer hover:text-blue-600">GST ▾</p>
-            {mobileOpen.gst && (
-              <div className="ml-4 space-y-2">
-                <Link to="/gst-registration" className="block hover:text-blue-600" >GST Registration</Link>
-                <Link to="/gst-return-filing" className="block hover:text-blue-600">GST Returns</Link>
-                <Link to="/gst-modifications" className="block hover:text-blue-600">GST Modifications</Link>
-              </div>
-            )}
+            <Link to="/about-us" className="block hover:text-blue-600 transition-colors duration-200 py-2 px-3 rounded-lg hover:bg-blue-50" onClick={closeMobileMenu}>
+              About Us
+            </Link>
+
+            {/* GST Mobile */}
+            <div className="border-t border-gray-200 pt-4">
+              <button
+                onClick={() => setMobileOpen({...mobileOpen, gst: !mobileOpen.gst})}
+                className="w-full text-left hover:text-blue-600 transition-colors duration-200 py-2 px-3 rounded-lg hover:bg-blue-50 flex items-center justify-between font-semibold"
+              >
+                <span>GST Services</span>
+                <FaChevronDown className={`text-sm transition-transform duration-200 ${mobileOpen.gst ? 'rotate-180' : ''}`} />
+              </button>
+              {mobileOpen.gst && (
+                <div className="ml-4 mt-2 space-y-2 border-l-2 border-blue-200 pl-4">
+                  <Link to="/gst-registration" className="block hover:text-blue-600 transition-colors duration-200 py-1" onClick={closeMobileMenu}>
+                    GST Registration
+                  </Link>
+                  <Link to="/gst-return-filing" className="block hover:text-blue-600 transition-colors duration-200 py-1" onClick={closeMobileMenu}>
+                    GST Returns Filing
+                  </Link>
+                  <Link to="/gst-modifications" className="block hover:text-blue-600 transition-colors duration-200 py-1" onClick={closeMobileMenu}>
+                    GST Modifications
+                  </Link>
+                </div>
+              )}
+            </div>
+
+            {/* Tax Mobile */}
+            <div className="border-t border-gray-200 pt-4">
+              <button
+                onClick={() => setMobileOpen({...mobileOpen, tax: !mobileOpen.tax})}
+                className="w-full text-left hover:text-blue-600 transition-colors duration-200 py-2 px-3 rounded-lg hover:bg-blue-50 flex items-center justify-between font-semibold"
+              >
+                <span>Tax Services</span>
+                <FaChevronDown className={`text-sm transition-transform duration-200 ${mobileOpen.tax ? 'rotate-180' : ''}`} />
+              </button>
+              {mobileOpen.tax && (
+                <div className="ml-4 mt-2 space-y-2 border-l-2 border-blue-200 pl-4">
+                  <Link to="/income-tax-filing" className="block hover:text-blue-600 transition-colors duration-200 py-1" onClick={closeMobileMenu}>
+                    Income Tax Filing
+                  </Link>
+                  <Link to="/income-tax-audit" className="block hover:text-blue-600 transition-colors duration-200 py-1" onClick={closeMobileMenu}>
+                    Tax Audit
+                  </Link>
+                  <Link to="/tds-returns" className="block hover:text-blue-600 transition-colors duration-200 py-1" onClick={closeMobileMenu}>
+                    TDS Returns
+                  </Link>
+                  <Link to="/professional-tax-registration" className="block hover:text-blue-600 transition-colors duration-200 py-1" onClick={closeMobileMenu}>
+                    Professional Tax
+                  </Link>
+                </div>
+              )}
+            </div>
+
+            {/* Food License Mobile */}
+            <div className="border-t border-gray-200 pt-4">
+              <button
+                onClick={() => setMobileOpen({...mobileOpen, food: !mobileOpen.food})}
+                className="w-full text-left hover:text-blue-600 transition-colors duration-200 py-2 px-3 rounded-lg hover:bg-blue-50 flex items-center justify-between font-semibold"
+              >
+                <span>Food License</span>
+                <FaChevronDown className={`text-sm transition-transform duration-200 ${mobileOpen.food ? 'rotate-180' : ''}`} />
+              </button>
+              {mobileOpen.food && (
+                <div className="ml-4 mt-2 space-y-2 border-l-2 border-blue-200 pl-4">
+                  <Link to="/fssai-registration" className="block hover:text-blue-600 transition-colors duration-200 py-1" onClick={closeMobileMenu}>
+                    FSSAI Registration
+                  </Link>
+                  <Link to="/fssai-state-license" className="block hover:text-blue-600 transition-colors duration-200 py-1" onClick={closeMobileMenu}>
+                    State License
+                  </Link>
+                  <Link to="/fssai-central-license" className="block hover:text-blue-600 transition-colors duration-200 py-1" onClick={closeMobileMenu}>
+                    Central License
+                  </Link>
+                </div>
+              )}
+            </div>
+
+            {/* Registration Mobile */}
+            <div className="border-t border-gray-200 pt-4">
+              <button
+                onClick={() => setMobileOpen({...mobileOpen, reg: !mobileOpen.reg})}
+                className="w-full text-left hover:text-blue-600 transition-colors duration-200 py-2 px-3 rounded-lg hover:bg-blue-50 flex items-center justify-between font-semibold"
+              >
+                <span>Registration</span>
+                <FaChevronDown className={`text-sm transition-transform duration-200 ${mobileOpen.reg ? 'rotate-180' : ''}`} />
+              </button>
+              {mobileOpen.reg && (
+                <div className="ml-4 mt-2 space-y-2 border-l-2 border-blue-200 pl-4">
+                  <Link to="/pan-registration" className="block hover:text-blue-600 transition-colors duration-200 py-1" onClick={closeMobileMenu}>
+                    PAN Registration
+                  </Link>
+                  <Link to="/tan-registration" className="block hover:text-blue-600 transition-colors duration-200 py-1" onClick={closeMobileMenu}>
+                    TAN Registration
+                  </Link>
+                  <Link to="/msme-registration" className="block hover:text-blue-600 transition-colors duration-200 py-1" onClick={closeMobileMenu}>
+                    MSME Registration
+                  </Link>
+                </div>
+              )}
+            </div>
+
+            <div className="border-t border-gray-200 pt-4">
+              <Link
+                to="/contact-us"
+                className="block bg-blue-600 hover:bg-blue-700 text-white text-center py-3 px-6 rounded-full font-semibold transition-all duration-200 shadow-md hover:shadow-lg"
+                onClick={closeMobileMenu}
+              >
+                Contact Us
+              </Link>
+            </div>
+
           </div>
-
-          {/* TAX */}
-          <div>
-            <p onClick={() => setMobileOpen({...mobileOpen, tax: !mobileOpen.tax})} className="cursor-pointer hover:text-blue-600">Tax ▾</p>
-            {mobileOpen.tax && (
-              <div className="ml-4 space-y-2">
-                <Link to="/income-tax-filing" className="block hover:text-blue-600">Income Tax Filing</Link>
-                <Link to="/income-tax-audit" className="block hover:text-blue-600">Tax Audit</Link>
-                <Link to="/tds-returns" className="block hover:text-blue-600">TDS Returns</Link>
-                <Link to="/professional-tax-registration" className="block hover:text-blue-600">Professional Tax</Link>
-              </div>
-            )}
-          </div>
-
-          {/* FOOD LICENSE */}
-          <div>
-            <p onClick={() => setMobileOpen({...mobileOpen, food: !mobileOpen.food})} className="cursor-pointer hover:text-blue-600">Food License ▾</p>
-            {mobileOpen.food && (
-              <div className="ml-4 space-y-2">
-                <Link to="/fssai-registration" className="block hover:text-blue-600">FSSAI Registration</Link>
-                <Link to="/fssai-state-license" className="block hover:text-blue-600">State License</Link>
-                <Link to="/fssai-central-license" className="block hover:text-blue-600">Central License</Link>
-              </div>
-            )}
-          </div>
-
-          {/* REGISTRATION */}
-          <div>
-            <p onClick={() => setMobileOpen({...mobileOpen, reg: !mobileOpen.reg})} className="cursor-pointer hover:text-blue-600">Registration ▾</p>
-            {mobileOpen.reg && (
-              <div className="ml-4 space-y-2">
-                <Link to="/pan-registration" className="block hover:text-blue-600">PAN Registration</Link>
-                <Link to="/tan-registration" className="block hover:text-blue-600">TAN Registration</Link>
-                <Link to="/msme-registration" className="block hover:text-blue-600">MSME Registration</Link>
-              </div>
-            )}
-          </div>
-
-          <Link to="/contact-us" className="block hover:text-blue-600">
-            Contact Us
-          </Link>
-
         </div>
       )}
     </nav>
