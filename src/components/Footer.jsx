@@ -159,7 +159,7 @@ const Footer = () => {
                     <div>
                       <div className="font-medium">Locations</div>
                       <div className="text-blue-200">
-                        Narasapuram & Palakolu,<br />Andhra Pradesh
+                        Flat No. 101, Sainadh Residency, Steamer Road<br />Narasapuram, Andhra Pradesh
                       </div>
                     </div>
                   </div>
@@ -187,7 +187,7 @@ const Footer = () => {
                 <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 mb-6">
                   <iframe
                     title="Office Location"
-                    src="https://www.google.com/maps?q=Narasapuram&output=embed"
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d239.16930675793472!2d81.70593332822388!3d16.439603733365317!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a37d9d8cd0a1639%3A0x472fa46bbf948417!2sJ.M.RAO%20ASSOCIATES!5e0!3m2!1sen!2sin!4v1776800275869!5m2!1sen!2sin"
                     className="w-full h-48 rounded-lg border-0"
                     loading="lazy"
                   />

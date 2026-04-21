@@ -104,7 +104,7 @@ export default function Contact() {
               {
                 icon: <FaMapMarkerAlt className="text-3xl text-blue-600" />,
                 title: "Our Locations",
-                content: "Narasapuram & Palakolu,\nAndhra Pradesh",
+                content: "Flat No. 101, Sainadh Residency, Steamer Road\nNarasapuram, Andhra Pradesh",
                 action: "#"
               },
               {
@@ -161,11 +161,10 @@ export default function Contact() {
             <form className="space-y-6" onSubmit={handleSubmit}>
               {/* Status Message */}
               {statusMessage.text && (
-                <div className={`p-4 rounded-lg flex items-center space-x-3 ${
-                  statusMessage.type === "success"
+                <div className={`p-4 rounded-lg flex items-center space-x-3 ${statusMessage.type === "success"
                     ? "bg-green-50 border border-green-200"
                     : "bg-red-50 border border-red-200"
-                }`}>
+                  }`}>
                   {statusMessage.type === "success" ? (
                     <FaCheckCircle className="text-green-600 text-xl flex-shrink-0" />
                   ) : (
@@ -320,22 +319,39 @@ export default function Contact() {
             Visit Our <span className="text-blue-600">Offices</span>
           </h2>
           <div className="bg-white rounded-xl shadow-md p-8 border border-gray-100">
-            <div className="grid md:grid-cols-2 gap-8">
-              <div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-4">Narasapuram Office</h3>
-                <div className="space-y-2 text-gray-600">
-                  <p>📍 Main Road, Narasapuram</p>
-                  <p>📞 +91 88012 21088</p>
-                  <p>🕒 Mon - Sat: 9:00 AM - 6:00 PM</p>
+            <div className="flex justify-center px-6">
+              <div className="bg-white rounded-2xl shadow-xl p-10 border border-gray-100 max-w-xl w-full text-center hover:shadow-2xl transition duration-300">
+
+                {/* Title */}
+                <h3 className="text-2xl font-bold text-blue-700 mb-6">
+                  Narasapuram Office
+                </h3>
+
+                {/* Divider */}
+                <div className="w-16 h-1 bg-blue-600 mx-auto mb-6 rounded-full"></div>
+
+                {/* Content */}
+                <div className="space-y-4 text-gray-600 text-lg">
+
+                  <div className="flex items-center justify-center gap-3">
+                    <span className="text-blue-600 text-xl">📍</span>
+                    <p>Flat No. 101, Sainadh Residency, Steamer Road</p>
+                  </div>
+
+                  <div className="flex items-center justify-center gap-3">
+                    <span className="text-blue-600 text-xl">📞</span>
+                    <p>+91 88012 21088</p>
+                  </div>
+
+                  <div className="flex items-center justify-center gap-3">
+                    <span className="text-blue-600 text-xl">🕒</span>
+                    <p>Mon - Sat: 10:00 AM - 6:00 PM</p>
+                  </div>
+
                 </div>
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-4">Palakolu Office</h3>
-                <div className="space-y-2 text-gray-600">
-                  <p>📍 Business Center, Palakolu</p>
-                  <p>📞 +91 94914 68423</p>
-                  <p>🕒 Mon - Sat: 9:00 AM - 6:00 PM</p>
-                </div>
+
+                
+
               </div>
             </div>
             <div className="mt-8 text-center">
@@ -349,12 +365,7 @@ export default function Contact() {
                 >
                   Call Narasapuram
                 </a>
-                <a
-                  href="tel:+919491468423"
-                  className="bg-blue-600 text-white px-6 py-2 rounded-full text-sm font-medium hover:bg-blue-700 transition-colors"
-                >
-                  Call Palakolu
-                </a>
+               
               </div>
             </div>
           </div>
