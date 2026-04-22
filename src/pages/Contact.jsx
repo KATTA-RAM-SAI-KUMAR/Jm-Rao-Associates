@@ -17,7 +17,7 @@ export default function Contact() {
 
     try {
       // Send form data to FormSubmit
-      const response = await fetch("https://formsubmit.co/ajax/jmraoassociates@gmail.com", {
+      const response = await fetch("https://formsubmit.co/ajax/venubimala1234@gmail.com", {
         method: "POST",
         body: formDataToSend,
         headers: {
@@ -53,8 +53,8 @@ export default function Contact() {
       <br />
 
       <Helmet>
-        <title>Contact Us | JM Rao Associates</title>
-        <meta name="description" content="Get in touch with JM Rao Associates for expert tax and compliance services in Andhra Pradesh. Contact us via phone, email, or visit our offices in Narasapuram and Palakolu." />
+        <title>Contact Us | J M Rao Associates</title>
+        <meta name="description" content="Get in touch with J M Rao Associates for expert tax and compliance services in Andhra Pradesh. Contact us via phone, email, or visit our offices in Narasapuram and Palakolu." />
       </Helmet>
 
       {/* Hero Section */}
@@ -110,7 +110,7 @@ export default function Contact() {
               {
                 icon: <FaClock className="text-3xl text-blue-600" />,
                 title: "Business Hours",
-                content: "Mon - Sat: 10:00 AM - 6:00 PM\nSunday: Closed",
+                content: "Mon - Sat: 10:00 AM - 7:00 PM\nSunday: Closed",
                 action: "#"
               }
             ].map((item, index) => (
@@ -316,7 +316,7 @@ export default function Contact() {
         {/* Map Section */}
         <section className="mb-16">
           <h2 className="text-3xl font-bold text-center text-blue-800 mb-8">
-            Visit Our <span className="text-blue-600">Offices</span>
+            Visit Our <span className="text-blue-600">Office</span>
           </h2>
           <div className="bg-white rounded-xl shadow-md p-8 border border-gray-100">
             <div className="flex justify-center px-6">
@@ -345,7 +345,7 @@ export default function Contact() {
 
                   <div className="flex items-center justify-center gap-3">
                     <span className="text-blue-600 text-xl">🕒</span>
-                    <p>Mon - Sat: 10:00 AM - 6:00 PM</p>
+                    <p>Mon - Sat: 10:00 AM - 7:00 PM</p>
                   </div>
 
                 </div>

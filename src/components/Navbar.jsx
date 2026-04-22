@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import logo from "../assets/logo1.svg";
+
 import { FaBars, FaTimes, FaChevronDown, FaPhone, FaWhatsapp } from "react-icons/fa";
 
 export default function Navbar() {
@@ -22,21 +22,31 @@ export default function Navbar() {
     <nav className="bg-white shadow-lg sticky top-0 z-50 border-b border-gray-100">
 
       {/* Top Contact Bar */}
-      <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white py-2 px-4">
-        <div className="max-w-7xl mx-auto flex justify-between items-center text-sm">
-          <div className="flex items-center space-x-6">
+      <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white py-2 px-3">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center text-xs sm:text-sm gap-2 sm:gap-0">
+
+          {/* Left Side */}
+          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-6">
+
+            {/* Phone */}
             <div className="flex items-center space-x-2">
               <FaPhone className="text-yellow-300 text-xs" />
-              <span>+91 94914 68423</span>
+              <a href="tel:+919491468423">+91 94914 68423</a>
             </div>
-            <div className="hidden sm:flex items-center space-x-2">
+
+            {/* WhatsApp (NOW VISIBLE ON MOBILE) */}
+            <div className="flex items-center space-x-2">
               <FaWhatsapp className="text-green-300 text-xs" />
-              <span>WhatsApp: +91 8801221088</span>
+              <a href="https://wa.me/918801221088">+91 8801221088</a>
             </div>
+
           </div>
-          <div className="hidden md:block text-xs opacity-90">
+
+          {/* Right Side */}
+          <div className="text-xs opacity-90 text-center sm:text-right">
             Serving Andhra Pradesh | Est. 2017
           </div>
+
         </div>
       </div>
 
@@ -45,10 +55,10 @@ export default function Navbar() {
         <div className="flex justify-between items-center py-4">
 
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-3" onClick={closeMobileMenu}>
-            <img src={logo} alt="JM Rao Associates" className="h-12 w-auto object-contain" />
+          <Link to="/" className="flex items-center space-x-1" onClick={closeMobileMenu}>
+            <img src="/logo1.svg" alt="JM Rao Associates" className="h-12 w-auto object-contain" />
             <div className="text-xl font-bold">
-              <span className="text-blue-700">JM RAO</span>{" "}
+              <span className="text-blue-700">J M RAO</span>{" "}
               <span className="text-gray-800">ASSOCIATES</span>
             </div>
           </Link>
@@ -72,15 +82,15 @@ export default function Navbar() {
               </button>
 
               <div className="absolute left-0 top-full mt-2 bg-white shadow-xl rounded-lg w-56 p-3 space-y-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 border border-gray-100">
-              <div className="border-b border-gray-200 pb-2 mb-2">
+                <div className="border-b border-gray-200 pb-2 mb-2">
                   <h3 className="font-semibold text-blue-700 text-sm uppercase tracking-wide">Services</h3>
-              </div>
+                </div>
                 <Link to="/gst" className="block hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">
                   GST
                 </Link>
 
                 <Link to="/tax" className="block hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">
-                 Income Tax
+                  Income Tax
                 </Link>
 
                 <Link to="/fssai" className="block hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded">
@@ -121,7 +131,7 @@ export default function Navbar() {
             <Link to="/" className="block hover:text-blue-600 transition-colors duration-200 py-2 px-3 rounded-lg hover:bg-blue-50" onClick={closeMobileMenu}>
               Home
             </Link>
-            <div className="border-t border-gray-200"/>
+            <div className="border-t border-gray-200" />
             <Link to="/about-us" className="block  transition-colors duration-200 py-2 px-3 rounded-lg hover:bg-blue-50" onClick={closeMobileMenu}>
               About Us
             </Link>

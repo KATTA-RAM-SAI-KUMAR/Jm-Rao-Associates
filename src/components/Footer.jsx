@@ -84,7 +84,7 @@ const Footer = () => {
               <div className="lg:col-span-1">
                 <div className="mb-6">
                   <h2 className="text-3xl font-bold mb-2 bg-gradient-to-r from-blue-400 to-blue-200 bg-clip-text text-transparent">
-                    JM Rao Associates
+                    J M Rao Associates
                   </h2>
                   <p className="text-blue-200 text-sm mb-1">
                     Proprietor: <span className="text-white font-semibold">J. Manikyalarao</span>
@@ -165,11 +165,21 @@ const Footer = () => {
                   </div>
 
                   <div className="flex items-start space-x-3">
+                    <FaMapMarkerAlt className="text-blue-400 mt-1 flex-shrink-0" />
+                    <div>
+                      <div className="font-medium">Branches</div>
+                      <div className="text-blue-200">
+                        Narasapuram | Palakollu
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start space-x-3">
                     <FaClock className="text-blue-400 mt-1 flex-shrink-0" />
                     <div>
                       <div className="font-medium">Office Hours</div>
                       <div className="text-blue-200 text-sm">
-                        Mon - Sat: 10:00 AM - 6:00 PM<br />
+                        Mon - Sat: 10:00 AM - 7:00 PM<br />
                         Sunday: Closed
                       </div>
                     </div>
